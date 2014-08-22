@@ -25,7 +25,7 @@ end
 
 
 def lookup_parcel(parcel_id)
-  parcel = PARCELS.where('"PVANUM" = ?', parcel_id.to_i).first
+  parcel = PARCELS.where('"PVANUM" = ?', parcel_id).first
   { "formatted_address" => parcel[:ADDRESS],
     "parcel_id" => parcel[:PVANUM],
     "geometry" => {
