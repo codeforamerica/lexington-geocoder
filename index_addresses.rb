@@ -2,7 +2,7 @@ require 'elasticsearch'
 require 'csv'
 
 # Connect to localhost:9200 by default:
-es = Elasticsearch::Client.new(hosts: [ENV['BONSAI_URL']], log: true)
+es = Elasticsearch::Client.new(hosts: [ENV['ELASTICSEARCH_URL']], log: true)
 
 CSV.foreach('data/ParcelCentroids.csv', {headers: true}) do |address|
   if address["PVANUM"] =~ /\d+/
