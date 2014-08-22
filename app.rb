@@ -1,3 +1,5 @@
+require 'dotenv'
+Dotenv.load
 require 'sinatra'
 require 'sequel'
 require 'json'
@@ -8,11 +10,10 @@ get '/' do
 end
 
 
-DB = Sequel.connect('postgres://erik:@localhost/geocode_code_enforcement')
+DB = Sequel.connect(ENV['DATABASE_URL'])
 PARCELS = DB.from(:parcels)
 
-# Connect to localhost:9200 by default:
-ES = Elasticsearch::Client.new
+ES = Elasticsearch::Client.new(hosts: ENV['ELASTICSEARCH_URL'])
 
 def search_for(address)
   results = ES.search index: 'addresses',
@@ -35,7 +36,7 @@ def lookup_parcel(parcel_id)
     }}
 end
 
-def geocode(query = '123 Main st')
+def likely_parcels(query = '123 Main st')
   hits = search_for(query)
   response = {'results' => []}
   return response if hits["total"] == 0
@@ -50,5 +51,5 @@ end
 
 get '/geocode' do
   content_type :json
-  geocode(params["query"]).to_json
+  likely_parcels(params["query"]).to_json
 end
