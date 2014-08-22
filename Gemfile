@@ -1,5 +1,8 @@
-source 'https://rubygems.org'
-
-ruby '2.0.0'
+source "https://rubygems.org"
 
 gem 'elasticsearch'
+gem 'dotenv'
+gem "geocoder"
+gem 'pg'
+gem "sequel"
+gem 'sinatra'
