@@ -1,3 +1,5 @@
+require 'dotenv'
+Dotenv.load
 require 'elasticsearch'
 require 'csv'
 
@@ -15,7 +17,9 @@ CSV.foreach('data/ParcelCentroids.csv', {headers: true}) do |address|
          NAME: address["NAME"],
          TYPE: address["TYPE"],
          ADDRESS: address["ADDRESS"],
-         UNIT: address["UNIT"]
+         UNIT: address["UNIT"],
+         X: address["X"],
+         Y: address["Y"]
       })
   end
 end
