@@ -27,9 +27,12 @@ The JSON response is similar to Google's geocoder
 }
 ```
 
+The ![HTML UI](https://raw.githubusercontent.com/codeforamerica/lexington-geocoder/master/public/images/screenshot.jpg)
+ 
 ### What will this do in the future?
 
-TODO
+* Accept files to geocode as a batch
+* Emit performance metrics to indicate when this geocoder varies from high quality geocoders in geographic distance or ability to match
 
 ### Who is this made by?
 
