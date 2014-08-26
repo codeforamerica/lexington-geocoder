@@ -25,7 +25,7 @@ The JSON response is similar to Google's geocoder
 }
 ```
 
-The json result can be previewed through the ![HTML UI](https://raw.githubusercontent.com/codeforamerica/lexington-geocoder/master/public/images/screenshot.jpg)
+The json result can be previewed through the HTML UI ![HTML UI](https://raw.githubusercontent.com/codeforamerica/lexington-geocoder/master/public/images/screenshot.jpg)
  
 ### What will this do in the future?
 
