@@ -31,6 +31,7 @@ The json result can be previewed through the ![HTML UI](https://raw.githubuserco
 
 * Accept files to geocode as a batch
 * Emit performance metrics to indicate when this geocoder varies from high quality geocoders in geographic distance or ability to match
+* Generalize for any city that has a reliable address dataset
 
 ### Who is this made by?
 
