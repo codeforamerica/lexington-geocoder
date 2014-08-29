@@ -19,22 +19,28 @@ def search_for(address)
 end
 
 def format_parcel(match)
-  { "formatted_address" => match['ADDRESS'],
-    "parcel_id" => match['PVANUM'],
-    "geometry" => {
-       "location" => {
-          "lat" => match['Y'],
-          "lng" => match['X'],
-       },
-    }}
+  {
+    'type' => 'Feature',
+    'geometry' => {
+      'type' => 'Point',
+      'coordinates' => [
+        match['Y'],
+        match['X']
+      ]
+    },
+    'properties' => {
+      "formatted_address" => match['ADDRESS'],
+      "parcel_id" => match['PVANUM'],
+    }
+  }
 end
 
 def likely_parcels(query = '123 Main st')
   hits = search_for(query)
-  response = {'results' => []}
+  response = {'type' => 'FeatureCollection', 'features' => []}
   return response if hits["total"] == 0
 
-  response['results'] = hits['hits'].map do |hit|
+  response['features'] = hits['hits'].map do |hit|
     match = hit['_source']
     format_parcel match
   end

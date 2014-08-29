@@ -4,13 +4,11 @@ Lexington Geocoder is a service to allow people, but especially computer program
 
 ### Why are we doing this?
 
-Because LFUCG (Lexington's government) has many datasets that contain addresses but not an easy way to know that the '449 W. Fourth St.' in one database is the same as the differently spelled '435 W 4th St.' in another. This service lets you look them both up and find their precise parcel id.
+Because LFUCG (Lexington's government) has many datasets that contain addresses that are captured as '449 W. Fourth St.' in one database and '435 W 4th St.' in another. This service lets you look them up and find their precise parcel id, despite spelling variations.
 
 ### How to use it?
 
-HTTP
-
-* GET `http://lexington-geocoder.herokuapp.com/geocode?query=449+w+4th`
+When programming, make an HTTP GET request to `http://lexington-geocoder.herokuapp.com/geocode?query=449+w+4th`
 
 The JSON response is similar to Google's geocoder
 
@@ -27,9 +25,13 @@ The JSON response is similar to Google's geocoder
 }
 ```
 
+The json result can be previewed through the [HTML UI](http://lexington-geocoder.herokuapp.com/) ![HTML UI](https://raw.githubusercontent.com/codeforamerica/lexington-geocoder/master/public/images/screenshot.jpg)
+ 
 ### What will this do in the future?
 
-TODO
+* Accept files to geocode as a batch
+* Emit performance metrics to indicate when this geocoder varies from other geocoders in geographic distance or ability to match an address
+* Generalize for any city that has a reliable address dataset
 
 ### Who is this made by?
 
