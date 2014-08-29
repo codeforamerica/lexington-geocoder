@@ -24,8 +24,8 @@ def format_parcel(match)
     'geometry' => {
       'type' => 'Point',
       'coordinates' => [
-        match['Y'],
-        match['X']
+        match['X'].to_f,
+        match['Y'].to_f
       ]
     },
     'properties' => {
