@@ -40,10 +40,11 @@ $(function() {
     name: 'query',
     displayKey: 'value',
     source: function(query, process) {
-    return $.get('/geocode', { query: query }, function (data) {
+    return $.get('/geocode', { query: query }, function (geojson) {
+      console.log(JSON.stringify(geojson));
         var matches = [];
-        data.results.forEach(function(result) {
-          matches.push({ value: JSON.stringify(result) });
+        geojson.features.forEach(function(feature) {
+          matches.push({ value: JSON.stringify(feature) });
         });
         return process(matches);
       });
