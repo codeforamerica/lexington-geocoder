@@ -52,7 +52,7 @@ $(function() {
     displayKey: 'value',
     source: function(query, process) {
     return $.get('/geocode', { query: query }, function (geojson) {
-      console.log(JSON.stringify(geojson));
+      addToMap(geojson);
         var matches = [];
         geojson.features.forEach(function(feature) {
           matches.push({ value: JSON.stringify(feature) });
