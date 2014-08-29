@@ -42,6 +42,7 @@
   <script src="/js/map.js"></script>
   <script type="text/javascript">
 $(function() {
+  mapObject.init();
   $('#the-basics .typeahead').typeahead({
     hint: true,
     highlight: true,
@@ -52,7 +53,7 @@ $(function() {
     displayKey: 'value',
     source: function(query, process) {
     return $.get('/geocode', { query: query }, function (geojson) {
-      addToMap(geojson);
+      mapObject.addToMap(geojson);
         var matches = [];
         geojson.features.forEach(function(feature) {
           matches.push({ value: JSON.stringify(feature) });
