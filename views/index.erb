@@ -8,8 +8,14 @@
     .twitter-typeahead {
       width: 600px;
     }
+    #map {
+      height: 300px;
+      width: 780px;
+      margin-top: 25px;
+    }
   </style>
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link href="https://api.tiles.mapbox.com/mapbox.js/v2.0.1/mapbox.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -17,6 +23,9 @@
     <div class="jumbotron">
       <div class="container">
         <h1>Lexington Address Service</h1>
+      </div>
+      <div class="container">
+        <div id="map"></div>
       </div>
     </div>
 
@@ -28,9 +37,12 @@
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//api.tiles.mapbox.com/mapbox.js/v2.0.1/mapbox.js"></script>
   <script src="/js/typeahead.bundle.js"></script>
+  <script src="/js/map.js"></script>
   <script type="text/javascript">
 $(function() {
+  var map = MapBuilder.init('map');
   $('#the-basics .typeahead').typeahead({
     hint: true,
     highlight: true,
@@ -41,7 +53,7 @@ $(function() {
     displayKey: 'value',
     source: function(query, process) {
     return $.get('/geocode', { query: query }, function (geojson) {
-      console.log(JSON.stringify(geojson));
+        map.addToMap(geojson);
         var matches = [];
         geojson.features.forEach(function(feature) {
           matches.push({ value: JSON.stringify(feature) });
