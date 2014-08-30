@@ -1,5 +1,5 @@
 // Create map object
-var MapBuilder = {};
+window.MapBuilder = {};
 
 // initialize map
 MapBuilder.init = function(id) {
