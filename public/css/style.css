@@ -1,0 +1,35 @@
+/*Bootstrap modifications*/
+.form-control {
+  height: 50px;
+  font-size: 1.5em;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+/*Custom styles*/
+
+.twitter-typeahead {
+  width: 100%;
+}
+
+#map {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 40%;
+}
+
+#intro {
+  margin-top: 50px;
+}
+
+#intro h1 {
+  font-size: 3em;
+}
+
+#intro p {
+  font-size: 1.8em;
+  font-weight: 200;
+}
+
