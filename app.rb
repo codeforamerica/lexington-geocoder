@@ -8,6 +8,10 @@ get '/' do
   erb :index
 end
 
+get '/about' do
+  erb :about
+end
+
 ES = Elasticsearch::Client.new(hosts: ENV['ELASTICSEARCH_URL'])
 
 def search_for(address)

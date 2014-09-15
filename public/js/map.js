@@ -4,7 +4,7 @@ window.MapBuilder = {};
 // initialize map
 MapBuilder.init = function(id) {
   // Create map container
-  var leafletMap = L.mapbox.map(id, 'codeforamerica.hek4o94g', {maxZoom: 17, minZoom: 10, accessToken: 'pk.eyJ1IjoiY29kZWZvcmFtZXJpY2EiLCJhIjoiSTZlTTZTcyJ9.3aSlHLNzvsTwK-CYfZsG_Q'}).setView([38.042,-84.515], 11);
+  var leafletMap = L.mapbox.map(id, 'codeforamerica.jfnj92nm', {maxZoom: 17, minZoom: 10, accessToken: 'pk.eyJ1IjoiY29kZWZvcmFtZXJpY2EiLCJhIjoiSTZlTTZTcyJ9.3aSlHLNzvsTwK-CYfZsG_Q'}).setView([38.03,-84.509], 12);
 
   // Make layer group
   var addresses = L.layerGroup();
