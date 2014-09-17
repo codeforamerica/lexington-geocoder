@@ -29,14 +29,14 @@ The geoJSON response:
    	       		"formatted_address": "449 W FOURTH ST",
           		"parcel_id": "15602150"
        		}
-       }, 
+       },
        ... { more features }
    ]
 },
 ```
 
 The json result can be previewed through the [HTML UI](http://lexington-geocoder.herokuapp.com/) ![HTML UI](https://raw.githubusercontent.com/codeforamerica/lexington-geocoder/473ffa57d82044c2c2eac02f9b56bfb0958f5725/public/images/screenshot.jpg)
- 
+
 ### What will this do in the future?
 
 * Accept files to geocode as a batch
@@ -45,13 +45,13 @@ The json result can be previewed through the [HTML UI](http://lexington-geocoder
 
 ### Who is this made by?
 
-Lexingteam! 
+Lexingteam!
 
 * [Erik Schwartz](https://github.com/eeeschwartz)
 * [Lyzi Diamond](https://github.com/lyzidiamond)
 * [Livien Yin](https://github.com/livienyin)
 
-With completely indispensable help from Jonathan Hollinger and Shaye Rabold at [Lexington-Fayette Urban County Government](http://lexingtonky.gov/) and David O'Neill, the [Fayette County Property Valuation Administrator](http://www.fayette-pva.com/)
+With completely indispensable help from Jonathan Hollinger and Shaye Rabold at [Lexington-Fayette Urban County Government](http://lexingtonky.gov/) and David O'Neill, the [Property Valuation Administrator](http://www.fayette-pva.com/)
 
 ### Setup
 
