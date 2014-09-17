@@ -10,22 +10,32 @@ Because LFUCG (Lexington's government) has many datasets that contain addresses 
 
 When programming, make an HTTP GET request to `http://lexington-geocoder.herokuapp.com/geocode?query=449+w+4th`
 
-The JSON response is similar to Google's geocoder
+The geoJSON response:
 
 ```
-{"results":
-	[
-		{"formatted_address":"449 W FOURTH ST",
-			"parcel_id":"15602150",
-			"geometry":{"location":	{"lat":38.0552851548526,"lng":-84.4949386945456}}},
-		{"formatted_address":"449 W SECOND ST",
-			"parcel_id":"10350975",
-			"geometry":{"location": {"lat":38.0527766687416,"lng":-84.4985605645134}}}
-	]
-}
+{
+"type": "FeatureCollection",
+   "features": [
+       {
+	       	"type": "Feature",
+	       	"geometry": {
+	       		"type": "Point",
+	        	"coordinates": [
+		       		-84.4949386945456,
+		       		38.055285154852555
+	        	]
+       		},
+   	   		"properties": {
+   	       		"formatted_address": "449 W FOURTH ST",
+          		"parcel_id": "15602150"
+       		}
+       }, 
+       ... { more features }
+   ]
+},
 ```
 
-The json result can be previewed through the [HTML UI](http://lexington-geocoder.herokuapp.com/) ![HTML UI](https://raw.githubusercontent.com/codeforamerica/lexington-geocoder/master/public/images/screenshot.jpg)
+The json result can be previewed through the [HTML UI](http://lexington-geocoder.herokuapp.com/) ![HTML UI](https://raw.githubusercontent.com/codeforamerica/lexington-geocoder/473ffa57d82044c2c2eac02f9b56bfb0958f5725/public/images/screenshot.jpg)
  
 ### What will this do in the future?
 
@@ -35,11 +45,13 @@ The json result can be previewed through the [HTML UI](http://lexington-geocoder
 
 ### Who is this made by?
 
-Why, Lexingteam of course.
+Lexingteam! 
 
 * [Erik Schwartz](https://github.com/eeeschwartz)
 * [Lyzi Diamond](https://github.com/lyzidiamond)
 * [Livien Yin](https://github.com/livienyin)
+
+With completely indispensable help from Jonathan Hollinger and Shaye Rabold at [Lexington-Fayette Urban County Government](http://lexingtonky.gov/) and David O'Neill, the [Property Valuation Administrator](http://www.fayette-pva.com/)
 
 ### Setup
 
@@ -63,7 +75,16 @@ csvsql --db postgresql:///lexington_geocoder --insert --table parcels data/Parce
 ruby index_addresses.rb
 ... takes a few minutes
 bundle exec rackup
-
-`curl http://localhost:9292/geocode?query=449+w+4th`
-... should return some json!
 ```
+
+### Test it out
+
+* If you have access to the 'curl' command
+
+`curl http://localhost:9292/geocode?query=449+w+4th` ... should return some json!
+
+* [Ajax example](https://github.com/codeforamerica/lexington-geocoder/blob/2b6326565643be0264b17b4b2af27f47887ac225/views/index.erb#L55) in javascript
+
+
+
+
