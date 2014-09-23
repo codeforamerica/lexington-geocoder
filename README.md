@@ -53,7 +53,7 @@ The geoJSON response:
 },
 ```
 
-The json result can be previewed through the [HTML UI](http://lexington-geocoder.herokuapp.com/) ![HTML UI](https://raw.githubusercontent.com/codeforamerica/lexington-geocoder/473ffa57d82044c2c2eac02f9b56bfb0958f5725/public/images/screenshot.jpg)
+The json result can be previewed through the [HTML UI](http://lexington-geocoder.herokuapp.com/). ![HTML UI](https://raw.githubusercontent.com/codeforamerica/lexington-geocoder/master/screenshots/streetscope.png)
 
 ### Setup
 
