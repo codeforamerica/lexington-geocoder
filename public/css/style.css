@@ -19,6 +19,10 @@
   width: 40%;
 }
 
+#logo {
+  padding-bottom: 50px;
+}
+
 #intro {
   margin-top: 60px;
 }
