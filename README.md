@@ -1,10 +1,28 @@
-# StreetScope
+# Streetscope
 
-StreetScope is a service to allow people, but especially computer programs, to submit an address like '123 Main St.' and find its lat/lon coordinates and canonical parcel_id in the Lexington, KY Property Value Administrator's set of addresses.
+Streetscope is a service to allow people, but especially computer programs, to submit an address like '123 Main St.' and find its lat/lon coordinates and canonical parcel_id in the Lexington, KY Property Value Administrator's set of addresses.
 
 ### Why are we doing this?
 
-Because LFUCG (Lexington's government) has many datasets that contain addresses that are captured as '449 W. Fourth St.' in one database and '435 W 4th St.' in another. This service lets you look them up and find their precise parcel id, despite spelling variations.
+City agencies in Lexington sometimes disagree on the correct way to reference a single address or taxlot. (And sometimes someone entering data just makes a typo. Oops!) That makes it really hard to get a complete picture of a single property.
+
+Streetscope allows different databases to know they're talking about the same address, even if it's not spelled exactly the same. It returns a geographic location and a parcel ID for matching addresses across databases to enable connections between these datasets and get a true picture of the city.
+
+### What will this do in the future?
+
+* Accept files to geocode as a batch
+* Emit performance metrics to indicate when this geocoder varies from other geocoders in geographic distance or ability to match an address
+* Generalize for any city that has a reliable address dataset
+
+### Who is this made by?
+
+Lexingteam!
+
+* [Erik Schwartz](https://github.com/eeeschwartz)
+* [Lyzi Diamond](https://github.com/lyzidiamond)
+* [Livien Yin](https://github.com/livienyin)
+
+With completely indispensable help from Jonathan Hollinger and Shaye Rabold at [Lexington-Fayette Urban County Government](http://lexingtonky.gov/) and David O'Neill, the [Property Valuation Administrator](http://www.fayette-pva.com/)
 
 ### How to use it?
 
@@ -35,23 +53,7 @@ The geoJSON response:
 },
 ```
 
-The json result can be previewed through the [HTML UI](http://lexington-geocoder.herokuapp.com/) ![HTML UI](https://raw.githubusercontent.com/codeforamerica/lexington-geocoder/473ffa57d82044c2c2eac02f9b56bfb0958f5725/public/images/screenshot.jpg)
-
-### What will this do in the future?
-
-* Accept files to geocode as a batch
-* Emit performance metrics to indicate when this geocoder varies from other geocoders in geographic distance or ability to match an address
-* Generalize for any city that has a reliable address dataset
-
-### Who is this made by?
-
-Lexingteam!
-
-* [Erik Schwartz](https://github.com/eeeschwartz)
-* [Lyzi Diamond](https://github.com/lyzidiamond)
-* [Livien Yin](https://github.com/livienyin)
-
-With completely indispensable help from Jonathan Hollinger and Shaye Rabold at [Lexington-Fayette Urban County Government](http://lexingtonky.gov/) and David O'Neill, the [Property Valuation Administrator](http://www.fayette-pva.com/)
+The json result can be previewed through the [HTML UI](http://lexington-geocoder.herokuapp.com/). ![HTML UI](https://raw.githubusercontent.com/codeforamerica/lexington-geocoder/master/screenshots/streetscope.png)
 
 ### Setup
 
@@ -60,28 +62,30 @@ With completely indispensable help from Jonathan Hollinger and Shaye Rabold at [
 * [Install Ruby](https://github.com/codeforamerica/howto/blob/master/Ruby.md)
 * [Install csvkit](https://github.com/amandabee/cunyjdata/wiki/Tutorial:-Installing-CSVKit)
 
+In your command line, run the following:
+
 ```
-git clone https://github.com/codeforamerica/lexington-geocoder.git
-cd lexington-geocoder
-cp .env.sample .env
-gem install bundler
-bundle install
+$ git clone https://github.com/codeforamerica/lexington-geocoder.git
+$ cd lexington-geocoder
+$ cp .env.sample .env
+$ gem install bundler
+$ bundle install
 
 # make sure postgres is running, then:
-createdb lexington_geocoder
-csvsql --db postgresql:///lexington_geocoder --insert --table parcels data/ParcelCentroids.csv
+$ createdb lexington_geocoder
+$ csvsql --db postgresql:///lexington_geocoder --insert --table parcels data/ParcelCentroids.csv
 
 # make sure elasticsearch is running then:
-ruby index_addresses.rb
-... takes a few minutes
-bundle exec rackup
+$ ruby index_addresses.rb
+$ ... takes a few minutes
+$ bundle exec rackup
 ```
 
 ### Test it out
 
 * If you have access to the 'curl' command
 
-`curl http://localhost:9292/geocode?query=449+w+4th` ... should return some json!
+`$ curl http://localhost:9292/geocode?query=449+w+4th` ... should return some json!
 
 * [Ajax example](https://github.com/codeforamerica/lexington-geocoder/blob/2b6326565643be0264b17b4b2af27f47887ac225/views/index.erb#L55) in javascript
 
