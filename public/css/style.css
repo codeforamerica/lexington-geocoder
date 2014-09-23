@@ -19,6 +19,12 @@
   width: 40%;
 }
 
+@media only screen and (max-width: 992px) {
+  #map {
+    display: none;
+  }
+}
+
 #logo {
   padding-bottom: 50px;
 }
