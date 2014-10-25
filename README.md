@@ -1,3 +1,10 @@
+# This project has moved
+
+Active development of this project is occuring in the [streetscope](https://github.com/codeforamerica/streetscope) repository.
+
+This repository, the [lexington-geocoder](https://github.com/codeforamerica/lexington-geocoder), is no longer active. 
+
+
 # Streetscope
 
 Streetscope is a service to allow people, but especially computer programs, to submit an address like '123 Main St.' and find its lat/lon coordinates and canonical parcel_id in the Lexington, KY Property Value Administrator's set of addresses.
